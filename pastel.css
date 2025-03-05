@@ -1,97 +1,109 @@
-body{
-    margin  : 20px 50px 100px 200px;
-
-    background: linear-gradient(0deg, #91cdff 50%, #ffffff 100%);
+body {
+    margin: 20px 50px 100px 200px;
+    background: linear-gradient(45deg, #e6f2ff 0%, #ffffff 100%);
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
 }
-img{
-    width: 400px;
-    padding: 20px;
-    border-radius: 10%;
-    border-width: 5px;
-    border-style: groove;
-    border-color: aqua;
-    background: linear-gradient(0deg,#ff0000 0%, #ffffff 100%);
 
+img {
+    width: 450px;
+    padding: 15px;
+    border-radius: 15px;
+    border: 3px solid #4a90e2;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
 }
-.imagen-main{
+
+img:hover {
+    transform: scale(1.05);
+}
+
+.imagen-main {
     display: flex;
     justify-content: center;
+    margin-bottom: 30px;
 }
+
 #main-title {
-    
-    width: 300px;
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: console,sans-serif;
-    color: rebeccapurple;
-    font-size: 70px ;
-    text-shadow: -9px 8px 10px #0918e1;
-    transform: rotate(330deg);
+    font-family: 'Georgia', serif;
+    color: #2c3e50;
+    font-size: 55px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
-.intro{
-    width: 600px;
-    background: black;
+
+.intro {
+    width: 700px;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
     color: white;
-    font-size: 24px;
+    font-size: 20px;
     padding: 25px;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 30px auto;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
+
 .nav {
-    font-size: 24px;
-    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    padding: 0;
     list-style: none;
-    padding-left: 0;
 }
-.nav li{
-    display: inline-block;
-    
+
+.nav li {
+    margin: 0 15px;
 }
+
 .nav a {
     color: white;
-    background-color: #13a4a4;
-    padding: 5px;
-    border-radius: 5px;
+    background-color: #3498db;
+    padding: 10px 15px;
+    border-radius: 25px;
     text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: bold;
 }
-/* lo siguiente se aplica en este orden */
-.nav a:link{
-    background-color: blue;
+
+.nav a:hover {
+    background-color: #2980b9;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.postre-manzana, .postre-chocolate, .postre-fresa {
+    margin: 30px 0;
     color: white;
+    border-radius: 15px;
+    padding: 30px;
+    background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.postre-manzana h3, .postre-chocolate h4, .postre-fresa h4 {
+    border-bottom: 2px solid white;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.postre-manzana ul, .postre-chocolate ul, .postre-fresa ul,
+.postre-manzana ol, .postre-chocolate ol, .postre-fresa ol {
+    margin-left: 30px;
+}
+
+a[href="#menu"] {
+    display: block;
+    text-align: center;
+    color: #3498db;
     text-decoration: none;
-    padding: 5px;
+    margin-top: 15px;
+    font-weight: bold;
 }
-.nav a:visited{
-    background-color: purple;
-}
-.nav a:hover{
-    background-color: transparent;
-    color: blue;
+
+a[href="#menu"]:hover {
     text-decoration: underline;
-}
-.nav a:active{
-    color: #ff0000;
-}
-.postre-manzana {
-    margin: 10px;
-    color: white;
-    border-radius: 30px;
-    padding: 20px;
-    background: linear-gradient(0deg, darkblue 0%, darkmagenta 100%);
-}
-.postre-chocolate{
-    margin: 10px;
-    color: white;
-    border-radius: 30px;
-    padding: 20px;
-    background: linear-gradient(0deg, darkblue 0%, darkmagenta 100%);
-}
-.postre-fresa {
-    margin: 10px;
-    color: white;
-    border-radius: 30px;
-    padding: 20px;
-    background: linear-gradient(0deg, darkblue 0%, darkmagenta 100%);
 }
