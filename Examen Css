@@ -1,0 +1,155 @@
+h1 {
+    font-size: 40px;
+   }
+   h2 {
+   font-size: 30px;
+   }
+   h3 {
+   font-size: 20px;
+   }
+   table {
+     border-collapse: collapse;
+     width: 100%;
+     margin: 20px 0;
+   }
+   table, th, td {
+     border: 1px solid black;
+   }
+   th {
+     padding: 12px 8px;
+     text-align: center;
+     background-color: #0047AB;
+     color: white;
+     font-weight: bold;
+   }
+   td {
+     padding: 10px 8px;
+     text-align: center;
+     background-color: beige;
+   }
+   td:first-child {
+     background-color: #800020; 
+     color: white; 
+     font-weight: bold;
+   }
+   .mascotas-container {
+     padding: 25px;
+     margin: 20px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+   }
+   .mascotas-container img {
+     width: 200px;
+     height: 200px;
+     border-radius: 15px;
+     border: 3px solid #ff6b6b;
+     margin: 10px 0;
+     object-fit: cover;
+   }
+   .planta-card {
+     display: flex;
+     flex-direction: column;
+     margin: 20px;
+     border: 1px solid #ccc;
+     border-radius: 10px;
+     overflow: hidden;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   }
+   .planta-info {
+     display: flex;
+     padding: 15px;
+   }
+   .planta-nombres {
+     flex: 1;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+   }
+   .planta-nombres h3 {
+     color: blue;
+     text-align: left;
+     margin: 5px 0;
+   }
+   .planta-nombres p {
+     font-size: 18px;
+     margin: 5px 0;
+   }
+   .planta-imagen {
+     width: 200px;
+     height: 200px;
+     object-fit: cover;
+   }
+   .planta-descripcion {
+     background-color: #1e5631;
+     color: white;
+     padding: 15px;
+     font-size: 16px;
+   }
+   form {
+     margin: 20px;
+     padding: 20px;
+     border: 1px solid #ddd;
+     border-radius: 5px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+   }
+   label {
+     display: block;
+     margin: 10px 0 5px;
+   }
+   input, select {
+     margin-bottom: 15px;
+     padding: 8px;
+     width: 100%;
+     max-width: 300px;
+     box-sizing: border-box;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+   }
+   button {
+     padding: 8px 15px;
+     margin-right: 10px;
+     cursor: pointer;
+     background-color: #f0f0f0;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+   }
+   button:hover {
+     background-color: #e0e0e0;
+   }
+
+   .banderas-container {
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+     background-color: #f0f0f0;
+     padding: 20px;
+     margin: 20px;
+     border-radius: 10px;
+   }
+
+   .bandera-francia {
+     display: flex;
+     width: 150px;
+     height: 100px;
+   }
+   .francia-azul {
+     background-color: #002395;
+     width: 33.33%;
+     height: 100%;
+   }
+   .francia-blanco {
+     background-color: #ffffff;
+     width: 33.33%;
+     height: 100%;
+   }
+   .francia-rojo {
+     background-color: #ED2939;
+     width: 33.33%;
+     height: 100%;
+   }
+  
+   
+
+   
