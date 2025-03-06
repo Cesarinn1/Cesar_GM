@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluación Parcial</title>
+<link rel="stylesheet" href="examen.css">
+</head>
+<body>
+<h1>Universidad Cristóbal Colón</h1>
+<h2>Evaluación Parcial</h2>
+<h3>Nombre: Cesar Guadarrama Muñiz</h3>
+<h3>Peliculas</h3>
+<ol>
+    <li>Flow</li>
+    <li>Semilla de la higuera sagrada</li>
+    <li>Emilia Pérez</li>
+    <li>La chica de la aguja</li>
+    <li>Aún estoy aquí</li>
+</ol>
+
+<div style="text-align: left;">
+    <img src="Logo.svg" alt="Logotipo d la Universidad Cristóbal Colón" width="200" height="100">
+</div>
+
+<table>
+<tr>
+<th rowspan="2">Rango de edades</th>
+<th colspan="2">Mujeres</th>
+<th colspan="2">Hombres</th>
+<th colspan="2">Promedio General</th>
+</tr>
+<tr>
+<th>Estatura</th>
+<th>Peso</th>
+<th>Estatura</th>
+<th>Peso</th>
+<th>Estatura</th>
+<th>Peso</th>
+</tr>
+<tr>
+<td>5-10</td>
+<td>0.9</td>
+<td>35</td>
+<td>1.1</td>
+<td>38</td>
+<td>1.0</td>
+<td>36.5</td>
+</tr>
+<tr>
+<td>11-15</td>
+<td>0.98</td>
+<td>40</td>
+<td>1.6</td>
+<td>65</td>
+<td>1.3</td>
+<td>52.5</td>
+</tr>
+<tr>
+<td>16-20</td>
+<td>1.50</td>
+<td>45</td>
+<td>1.72</td>
+<td>70</td>
+<td>1.61</td>
+<td>57.5</td>
+</tr>
+<tr>
+<td>21-30</td>
+<td>1.60</td>
+<td>50</td>
+<td>1.7</td>
+<td>75</td>
+<td>1.65</td>
+<td>62.5</td>
+</tr>
+<tr>
+<td>31-35</td>
+<td>1.67</td>
+<td>64</td>
+<td>1.73</td>
+<td>78</td>
+<td>1.7</td>
+<td>71</td>
+</tr>
+<tr>
+<td>35-40</td>
+<td>1.62</td>
+<td>60</td>
+<td>1.71</td>
+<td>80</td>
+<td>1.69</td>
+<td>70</td>
+</tr>
+</table>
+
+<form>
+<label>Nombre completo: <input type="text" name="nombre" required></label><br>
+<label>Correo electrónico: <input type="email" name="correo" required></label><br>
+<label>Edad: <input type="number" name="edad" required></label><br>
+<label>Fecha de nacimiento: <input type="date" name="fecha_nacimiento" required></label><br>
+<button type="submit">Enviar</button>
+<button type="reset">Cancelar</button>
+</form>
+
+<div class="mascotas-container">
+<img src="perrofeliz.jpg" alt="Mascota 1">
+<img src="gatofeliz.jpg" alt="Mascota 2">
+<img src="Pez.webp" alt="Mascota 3">
+</div>
+<div class="planta-card">
+<div class="planta-info">
+<div class="planta-nombres">
+<h3>Nombre Científico</h3>
+<p>Orquidia</p>
+</div>
+<img class="planta-imagen" src="Orquidia.jpg" alt="Planta">
+</div>
+<div class="planta-descripcion">
+    Las orquídeas u orquidáceas (nombre científico Orchidaceae) son una 
+    familia de plantas monocotiledóneas que se distinguen por la complejidad de sus flores y por sus interacciones ecológicas con los agentes polinizadores
+    y con los hongos con los que forman micorrizas.
+</div>
+</div>
+<div class="banderas-container">
+    <div class="bandera-francia">
+        <div class="francia-azul"></div>
+        <div class="francia-blanco"></div>
+        <div class="francia-rojo"></div>
+    </div>
+
+</div>
+</body>
+</html>
