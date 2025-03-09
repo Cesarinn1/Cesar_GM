@@ -1,0 +1,42 @@
+h1 {
+    font-size: 2.5rem;
+    font-family: "Sigmar", sans-serif;
+}
+.navbar{
+    padding: 2rem;
+    background-color: white;
+}
+
+.navbar-collapse{
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero{
+    background-color: white;
+    min-height: 450px;
+    text-align: center;
+}
+
+.hero-principal{
+    padding: 3rem;
+}
+
+.hero-imagen-perfil{
+    width: 200px;
+    height: 200px;
+    margin: gray;
+}
+/* Medias Queries Adaptativas */
+@media screen and (max-width: 767x) {
+    .navbar-brand{
+        display:  none;
+    }
+}
+
+
+@media screen and (min-width:700px){
+    .hero-infierior-imagen{
+    max-width: 400px;
+}
+}
