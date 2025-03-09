@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <h2>Ejemplo de elementos de formulario</h2>
+    <form action="#" method="post">
+        <fieldset>
+            <legend>campos obliatorios</legend>
+     <p>
+<label for="id_nombre">Nombre</label>
+<input type="text" id="id_nombre" name="nombre" required>
+</p>
+<p>
+<label for="">contraseña
+<input type="password" name="password" required>
+</label>
+</p>
+<p>
+    <label for="">correo electronico </label>
+    <input type="email" name="email" id="correo" required>
+</p>
+</fieldset>
+     <p>
+        <label for="">edad</label>
+        <input type="number" id="numero" name="numero" min="1" max="106">
+     </p>
+          <p>
+            <label for="">fecha de nacimiento</label>
+            <input type="date" name="fecha" id="fecha">
+          </p>
+               <p>
+                <label for="">hora de cita: 
+                    <input type="time" name="hora">
+                </label>
+               </p>
+                    <p>
+                        <label for="">pais: </label>
+                        <select id="id_pais" name="pais">
+                            <option value="">seleccione...</option>
+                            <option value="mx">mexico</option>
+                            <option value="col">colombia</option>
+                            <option value="br">brasil</option>
+                        </select>
+                    </p>
+                         <p>
+                            <label for="">Genero</label>
+                            <input type="radio" name="Genero" id="masculino" value="masculino">
+                            <label for="masculino">masculino</label>
+                            <input type="radio" name="Genero" id="femenino" value="femenino">
+                            <label for="femenino">femenino</label>
+                         </p>
+                             <p>
+                                <label for="">intereses </label>
+                                <input type="checkbox" name="intereses" value="deportes">
+                                <label for="deportes">deportes</label>
+                                <input type="checkbox" name=" intereses" id="artes">
+                                <label for="artes">artes </label>
+                                <input type="checkbox" name="intereses  " id="lectura" value="lectura">
+                                <label for="lectura">lectura</label>
+                             </p>
+                                 <p>
+                                    <label for="">subir archivo</label>
+                                    <input type="file"   name="file" id="archivo">
+                                 </p>
+                        <p>
+                            <label for="comentarios">comentarios: <br></label>
+                            <textarea name="comenta" id="comentarios" rows="5" cols="50">texto </textarea>
+
+                        </p>
+
+                <p>
+                         <button type="submit">enviar</button>
+                         <button type="reset">restablecer </button> 
+                </p>
+</form>
+</body>
+</html>
