@@ -12,7 +12,7 @@ app.use(cors({
 }));
 
 // Conexión a MongoDB con opciones adicionales
-mongoose.connect("mongodb+srv://Cesar:Gymbro39@cesarinn.9rmjh.mongodb.net/?retryWrites=true&w=majority&appName=Cesarinn", {
+mongoose.connect("mongodb+srv://202260613:Gymbro39@cesarinn.9rmjh.mongodb.net/vehiculos?retryWrites=true&w=majority&appName=Cesarinn", {
 
   useNewUrlParser: true,
   useUnifiedTopology: true
