@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso al Sistema</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #4a6fa5;
+      --secondary-color: #166088;
+      --accent-color: #4fc3f7;
+      --error-color: #e53935;
+      --success-color: #43a047;
+      --light-gray: #f5f5f5;
+      --dark-gray: #333;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .auth-container {
+      width: 100%;
+      max-width: 400px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .auth-header {
+      background: var(--primary-color);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .auth-header h1 {
+      font-weight: 500;
+      font-size: 24px;
+    }
+    
+    .auth-form {
+      padding: 30px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--dark-gray);
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      transition: border 0.3s;
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary-color);
+      outline: none;
+    }
+    
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      background: var(--primary-color);
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .btn:hover {
+      background: var(--secondary-color);
+    }
+    
+    .auth-footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #eee;
+    }
+    
+    .auth-footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .auth-footer a:hover {
+      text-decoration: underline;
+    }
+    
+    .alert {
+      padding: 10px 15px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+    
+    .alert-success {
+      background: rgba(67, 160, 71, 0.1);
+      color: var(--success-color);
+      border: 1px solid rgba(67, 160, 71, 0.3);
+    }
+    
+    .alert-error {
+      background: rgba(229, 57, 53, 0.1);
+      color: var(--error-color);
+      border: 1px solid rgba(229, 57, 53, 0.3);
+    }
+    
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+    
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 500px;
+      transform: translateY(-20px);
+      transition: all 0.3s;
+    }
+    
+    .modal.active .modal-content {
+      transform: translateY(0);
+    }
+    
+    .modal-header {
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .modal-header h2 {
+      font-size: 20px;
+      font-weight: 500;
+    }
+    
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: #777;
+    }
+    
+    .modal-body {
+      padding: 20px;
+    }
+    
+    .modal-footer {
+      padding: 20px;
+      border-top: 1px solid #eee;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container" id="loginContainer">
+    <div class="auth-header">
+      <h1>Iniciar Sesión</h1>
+    </div>
+    <div class="auth-form">
+      <div id="loginAlert" class="alert" style="display: none;"></div>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="loginUsername">Usuario</label>
+          <input type="text" id="loginUsername" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Contraseña</label>
+          <input type="password" id="loginPassword" class="form-control" required>
+        </div>
+        <button type="submit" class="btn">Ingresar</button>
+      </form>
+    </div>
+    <div class="auth-footer">
+      ¿No tienes cuenta? <a href="#" id="showRegister">Regístrate</a>
+    </div>
+  </div>
+
+  <div class="modal" id="registerModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Crear Cuenta</h2>
+        <button class="close-btn" id="closeRegister">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="registerAlert" class="alert" style="display: none;"></div>
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="registerUsername">Usuario</label>
+            <input type="text" id="registerUsername" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="registerEmail">Correo Electrónico</label>
+            <input type="email" id="registerEmail" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="registerPassword">Contraseña</label>
+            <input type="password" id="registerPassword" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="registerConfirmPassword">Confirmar Contraseña</label>
+            <input type="password" id="registerConfirmPassword" class="form-control" required>
+          </div>
+          <button type="submit" class="btn">Registrarse</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Mostrar/ocultar modal de registro
+    document.getElementById('showRegister').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('registerModal').classList.add('active');
+    });
+    
+    document.getElementById('closeRegister').addEventListener('click', function() {
+      document.getElementById('registerModal').classList.remove('active');
+    });
+    
+    // Manejar registro
+    document.getElementById('registerForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const username = document.getElementById('registerUsername').value;
+      const email = document.getElementById('registerEmail').value;
+      const password = document.getElementById('registerPassword').value;
+      const confirmPassword = document.getElementById('registerConfirmPassword').value;
+      
+      const alertBox = document.getElementById('registerAlert');
+      
+      // Validaciones del cliente
+      if (password !== confirmPassword) {
+        showAlert(alertBox, 'Las contraseñas no coinciden', 'error');
+        return;
+      }
+      
+      if (password.length < 6) {
+        showAlert(alertBox, 'La contraseña debe tener al menos 6 caracteres', 'error');
+        return;
+      }
+      
+      try {
+        const response = await fetch('http://localhost:4000/api/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, email, password })
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+          throw new Error(data.error || 'Error en el registro');
+        }
+        
+        showAlert(alertBox, 'Registro exitoso! Redirigiendo...', 'success');
+        
+        // Guardar token y redirigir
+        localStorage.setItem('token', data.token);
+        setTimeout(() => {
+          window.location.href = '/dashboard.html';
+        }, 1500);
+        
+      } catch (error) {
+        showAlert(alertBox, error.message, 'error');
+      }
+    });
+    
+    // Manejar login
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const username = document.getElementById('loginUsername').value;
+      const password = document.getElementById('loginPassword').value;
+      
+      const alertBox = document.getElementById('loginAlert');
+      
+      try {
+        const response = await fetch('http://localhost:4000/api/signin', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+          throw new Error(data.error || 'Error en el inicio de sesión');
+        }
+        
+        showAlert(alertBox, 'Inicio de sesión exitoso! Redirigiendo...', 'success');
+        
+        // Guardar token y redirigir
+        localStorage.setItem('token', data.token);
+        setTimeout(() => {
+          window.location.href = '/dashboard.html';
+        }, 1500);
+        
+      } catch (error) {
+        showAlert(alertBox, error.message, 'error');
+      }
+    });
+    
+    // Función para mostrar alertas
+    function showAlert(element, message, type) {
+      element.textContent = message;
+      element.className = `alert alert-${type}`;
+      element.style.display = 'block';
+      
+      // Ocultar después de 5 segundos
+      setTimeout(() => {
+        element.style.display = 'none';
+      }, 5000);
+    }
+  </script>
+</body>
+</html>
