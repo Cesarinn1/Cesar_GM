@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago con Stripe</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input { width: 100%; padding: 8px; box-sizing: border-box; }
+        button { background: #6772e5; color: white; border: none; padding: 10px 15px; cursor: pointer; }
+        #card-element { border: 1px solid #ccc; padding: 10px; border-radius: 4px; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    <h1>Pagar con Stripe</h1>
+    <form id="payment-form">
+        <div class="form-group">
+            <label for="amount">Cantidad (USD):</label>
+            <input type="number" id="amount" min="1" value="10" required>
+        </div>
+        <div id="card-element"></div>
+        <button id="submit-button">Pagar</button>
+        <div id="payment-result"></div>
+    </form>
+
+    <script>
+        // Configuración de Stripe (usa tu clave pública)
+        const stripe = Stripe('pk_test_51RMH7hP2alKibvzbeA77qMrx7rpk2iHvhIrP07EKKAKMf2fPUABksJ2qOre9rfTfhbajkj42qExFoYlmtmLRV99Y00B1O77UJq'); // ¡Reemplaza con tu clave pública!
+        const elements = stripe.elements();
+        const cardElement = elements.create('card');
+        cardElement.mount('#card-element');
+
+        // Manejar el envío del formulario
+        const form = document.getElementById('payment-form');
+        const amountInput = document.getElementById('amount');
+        const submitButton = document.getElementById('submit-button');
+        const resultDiv = document.getElementById('payment-result');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitButton.disabled = true;
+
+            // 1. Obtener el monto en centavos
+            const amount = amountInput.value * 100;
+
+            // 2. Llamar al backend para crear un PaymentIntent
+            try {
+                const response = await fetch('http://localhost:3000/create-payment-intent', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ amount }),
+                });
+
+                const { clientSecret } = await response.json();
+
+                // 3. Confirmar el pago con Stripe
+                const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+                    payment_method: { card: cardElement },
+                });
+
+                if (error) {
+                    resultDiv.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+                } else if (paymentIntent.status === 'succeeded') {
+                    resultDiv.innerHTML = `<p style="color: green;">¡Pago exitoso! ID: ${paymentIntent.id}</p>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p style="color: red;">Error al procesar el pago: ${error.message}</p>`;
+            } finally {
+                submitButton.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
