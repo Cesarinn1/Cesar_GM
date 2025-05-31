@@ -1,47 +1,64 @@
-let num1=20;
-let num2=10;
-let suma=num1+num2;
-let multi=num1*num2;
-let div=num1/num2;
-let res=num1-num2;
-document.write(suma)
-document.write("<br>")
-document.write(res+"<br>")
-document.write(multi+"<br>")
-document.write(div+"<br>")
+// Variables numéricas con nombres descriptivos
+const valorA = 25;
+const valorB = 8;
 
-if(num1>num2){
-    document.write("el numero 1 es mayor");  
+// Operaciones matemáticas
+const resultadoSuma = valorA + valorB;
+const resultadoResta = valorA - valorB;
+const resultadoProducto = valorA * valorB;
+const resultadoDivision = valorA / valorB;
+
+// Mostrar resultados en consola
+console.log(`Suma: ${resultadoSuma}`);
+console.log(`Resta: ${resultadoResta}`);
+console.log(`Multiplicación: ${resultadoProducto}`);
+console.log(`División: ${resultadoDivision.toFixed(2)}`);
+
+// Comparación de valores
+const comparacion = valorA > valorB 
+    ? `El valor A (${valorA}) es mayor que el valor B (${valorB})`
+    : `El valor B (${valorB}) es mayor que el valor A (${valorA})`;
+console.log(comparacion);
+
+// Estructura de control para días de la semana
+const diaActual = new Date().getDay();
+let nombreDia;
+
+switch(diaActual) {
+    case 0: nombreDia = "Domingo"; break;
+    case 1: nombreDia = "Lunes"; break;
+    case 2: nombreDia = "Martes"; break;
+    case 3: nombreDia = "Miércoles"; break;
+    case 4: nombreDia = "Jueves"; break;
+    case 5: nombreDia = "Viernes"; break;
+    case 6: nombreDia = "Sábado"; break;
+    default: nombreDia = "Día no válido";
 }
-else{
-    document.write("el numero 2 es mayor");
+
+console.log(`Hoy es ${nombreDia}`);
+
+// Bucle iterativo
+const resultadosIteracion = [];
+for(let contador = 1; contador <= 5; contador++) {
+    resultadosIteracion.push(`Iteración ${contador}`);
+    console.log(`Procesando iteración ${contador}`);
 }
-document.write("<br>")
-let diasemana=3;
-switch(diasemana){
-    case 1:
-    document.write("lunes");
-    break;
 
-    case 2:
-    document.write("martes");
-    break;
-
-    case 3:
-    document.write("miercoles");
-    break;
-
-    case 4:
-    document.write("jueves");
-    break;
-
-    case 5:
-    document.write("viernes");
-    break;
-    default:
-    document.write("Ya es fin de semana, fuga a tragar mierda");
-}
-//ciclo for
-for(var i = 0; i < 10; i++){
-    document.write("<h1>" +i+"</h1>")
-}
+// Manejador de formulario
+document.getElementById('formularioAcceso').addEventListener('submit', function(evento) {
+    evento.preventDefault();
+    
+    const usuario = document.getElementById('nombreUsuario').value;
+    const clave = document.getElementById('claveAcceso').value;
+    
+    if(usuario && clave) {
+        console.log('Validando credenciales...');
+        // Aquí iría la lógica de autenticación real
+        setTimeout(() => {
+            alert('Credenciales recibidas. Redirigiendo...');
+            window.location.href = 'panel.html';
+        }, 800);
+    } else {
+        alert('Por favor complete ambos campos');
+    }
+});
