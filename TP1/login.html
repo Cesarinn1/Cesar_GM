@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso al Sistema</title>
+    <link rel="stylesheet" href="login.css" type="text/css">
+</head>
+<body>
+    <main class="contenedor-acceso">
+        <section class="tarjeta-acceso">
+            <h2 class="titulo-acceso">Ingreso al Portal</h2>
+            <form id="formularioAcceso" class="formulario">
+                <div class="grupo-campo">
+                    <label for="nombreUsuario" class="etiqueta-campo">Identificación</label>
+                    <input type="text" id="nombreUsuario" class="entrada-campo" required>
+                </div>
+                <div class="grupo-campo">
+                    <label for="claveAcceso" class="etiqueta-campo">Clave de Seguridad</label>
+                    <input type="password" id="claveAcceso" class="entrada-campo" required>
+                </div>
+                <button type="submit" class="boton-primario">Validar Credenciales</button>
+            </form>
+        </section>
+    </main>
+    <script src="login.js"></script>
+</body>
+</html>
